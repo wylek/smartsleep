@@ -92,7 +92,8 @@ class SmartSleepSunset(SmartSleepEntity, LightEntity):
 
     @callback
     def _handle_coordinator_update(self) -> None:
-        self._attr_is_on = self.coordinator.data["sunset_is_on"]
+        # TODO: pysomneo needs updating to store sunset_is_on status in data structure
+        # self._attr_is_on = self.coordinator.data["sunset_is_on"]
         self.async_write_ha_state()
 
     async def async_turn_on(self, **kwargs: Any) -> None:
