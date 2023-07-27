@@ -87,18 +87,17 @@ class SmartSleepSunset(SmartSleepEntity, LightEntity):
     """Representation of the SmartSleep's sunset (dusk) mode."""
     
     _attr_should_poll = True
-    _attr_supported_features = SUPPORT_BRIGHTNESS
+    _attr_supported_features = 0 # TODO: Implement sound level (pysomneo needs updating)
     _attr_translation_key = "sunset"
 
     @callback
     def _handle_coordinator_update(self) -> None:
         self._attr_is_on = self.coordinator.data["sunset_is_on"]
-        self._attr_brightness = self.coordinator.data["sunset_brightness"]
         self.async_write_ha_state()
 
     async def async_turn_on(self, **kwargs: Any) -> None:
         """Instruct the sunset mode to turn on."""
-        await self.coordinator.async_turn_on_sunset(kwargs.get(ATTR_BRIGHTNESS))
+        await self.coordinator.async_turn_on_sunset()
 
     async def async_turn_off(self, **kwargs: Any) -> None:
         """Instruct the sunset mode to turn off."""
