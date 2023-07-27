@@ -145,11 +145,12 @@ class SmartSleepCoordinator(DataUpdateCoordinator[None]):
             )
             await self.async_request_refresh()
     
-    async def async_turn_on_sunset(self, brightness) -> None:
+    async def async_turn_on_sunset(self) -> None:
         """Turn the device on."""
+        # TODO: Implement sound level (pysomneo needs updating)
         async with self.state_lock:
             await self.hass.async_add_executor_job(
-                self.somneo.toggle_sunset, True, brightness
+                self.somneo.toggle_sunset, True
             )
             await self.async_request_refresh()
 
