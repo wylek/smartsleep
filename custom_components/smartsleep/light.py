@@ -90,16 +90,6 @@ class SmartSleepSunset(SmartSleepEntity, LightEntity):
     _attr_supported_features = SUPPORT_BRIGHTNESS
     _attr_translation_key = "sunset"
 
-    def __init__(self, name, data, device_info, serial):
-        """Initialize a Sunset mode entity."""
-        self._name = name + "_sunset"
-        self._data = data
-        self._state = None
-        self._timer = None
-        self._brightness = None
-        self._device_info = device_info
-        self._serial = serial
-
     @callback
     def _handle_coordinator_update(self) -> None:
         self._attr_is_on = self.coordinator.data["light_is_on"]
