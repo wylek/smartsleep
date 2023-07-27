@@ -92,8 +92,8 @@ class SmartSleepSunset(SmartSleepEntity, LightEntity):
 
     @callback
     def _handle_coordinator_update(self) -> None:
-        self._attr_is_on = self.coordinator.data["light_is_on"]
-        self._attr_brightness = self.coordinator.data["light_brightness"]
+        self._attr_is_on = self.coordinator.data["sunset_is_on"]
+        self._attr_brightness = self.coordinator.data["sunset_brightness"]
         self.async_write_ha_state()
 
     async def async_turn_on(self, **kwargs: Any) -> None:

@@ -144,6 +144,20 @@ class SmartSleepCoordinator(DataUpdateCoordinator[None]):
                 self.somneo.toggle_night_light, False
             )
             await self.async_request_refresh()
+    
+    async def async_turn_on_sunset(self, brightness) -> None:
+        """Turn the device on."""
+        async with self.state_lock:
+            await self.hass.async_add_executor_job(
+                self.somneo.toggle_sunset, True, brightness
+            )
+            await self.async_request_refresh()
+
+    async def async_turn_off_sunset(self) -> None:
+        """Turn the device on."""
+        async with self.state_lock:
+            await self.hass.async_add_executor_job(self.somneo.toggle_sunset, False)
+            await self.async_request_refresh()
 
     async def async_toggle_alarm(self, alarm: str, state: bool) -> None:
         """Toggle alarm."""
