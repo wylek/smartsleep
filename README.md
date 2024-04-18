@@ -1,3 +1,13 @@
+---
+
+# 🛑 DEPRECATION NOTICE
+
+This fork of the original Somneo component from @theneweinstein is no longer maintained.
+
+➡️➡️➡️ [Somneo custom integration](https://github.com/theneweinstein/somneo)
+
+---
+
 # SmartSleep custom component for Home Assistant
 
 Home Assistant custom component for the Philips SmartSleep Connected Sleep and Wake-Up Light. This integration lets you control the SmartSleep light, nightlight, and sunset mode, and surfaces the following sensors: temperature, humidity, luminance, and noise. It also surfaces the wake-up alarms as binary sensors and provides a sensor with the first upcoming alarm.
